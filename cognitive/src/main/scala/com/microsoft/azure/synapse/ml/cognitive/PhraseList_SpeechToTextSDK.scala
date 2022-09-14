@@ -156,6 +156,15 @@ abstract class SpeechSDKBase extends Transformer
 
   setDefault(extraFfmpegArgs -> Array())
 
+  val phraseList = new StringArrayParam(this, "phraseList",
+    "List of words or phrases to help improve recognition")
+
+  def setPhraseList(v: Array[String]): this.type = set(phraseList, v)
+
+  def getPhraseList: Array[String] = $(phraseList)
+
+  setDefault(phraseList -> Array())
+    
   val streamIntermediateResults = new BooleanParam(this, "streamIntermediateResults",
     "Whether or not to immediately return itermediate results, or group in a sequence"
   )
